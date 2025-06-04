@@ -1882,3 +1882,64 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: var(--raw-seinna);
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.resume-icon {
+  color: var(--orange-yellow-crayola);
+  font-size: 1.2rem;
+}
+
+/* Shine effect every 10 seconds */
+.resume-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: shine-glow 5s infinite;
+}
+
+/* Automatic shine animation */
+@keyframes shine-glow {
+  0% {
+    left: -75%;
+    opacity: 0;
+  }
+  50% {
+    left: 125%;
+    opacity: 1;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+/* Soft halo glow on hover */
+.resume-btn:hover {
+  box-shadow:
+    0 0 8px rgba(255, 153, 51, 0.4),
+    0 0 16px rgba(255, 153, 51, 0.3),
+    0 0 24px rgba(255, 153, 51, 0.2);
+  transform: scale(1.02);
+}
