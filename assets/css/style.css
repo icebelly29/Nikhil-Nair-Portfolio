@@ -226,6 +226,18 @@ ul { list-style: none; }
   color: var(--text-main);
   text-shadow: 0 0 5px var(--accent-red);
 }
+
+.resume-glow {
+  color: var(--text-main) !important;
+  text-shadow: 0 0 2px var(--accent-red);
+  animation: resumePulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes resumePulse {
+  0% { text-shadow: 0 0 1px var(--accent-red); }
+  100% { text-shadow: 0 0 6px var(--accent-red); }
+}
+
 .copyright { color: var(--text-dim); pointer-events: auto;}
 
 /* -------------------------
