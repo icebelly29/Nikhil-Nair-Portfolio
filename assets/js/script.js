@@ -541,4 +541,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // -------------------------
+  // 8. VIDEO MODAL CONTROLLER
+  // -------------------------
+  const videoModal = document.getElementById('video-modal');
+  const videoIframe = document.getElementById('video-modal-iframe');
+  const videoModalClose = document.getElementById('video-modal-close');
+  const videoModalBackdrop = document.getElementById('video-modal-backdrop');
+  const videoCards = document.querySelectorAll('[data-video-src]');
+
+  function openVideoModal(url) {
+    if (videoModal && videoIframe) {
+      videoIframe.src = url;
+      videoModal.classList.add('open');
+    }
+  }
+
+  function closeVideoModal() {
+    if (videoModal && videoIframe) {
+      videoModal.classList.remove('open');
+      videoIframe.src = '';
+    }
+  }
+
+  videoCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.ctrlKey || e.metaKey || e.button === 1) return;
+      e.preventDefault();
+      const videoUrl = card.getAttribute('data-video-src');
+      if (videoUrl) openVideoModal(videoUrl);
+    });
+  });
+
+  if (videoModalClose) videoModalClose.addEventListener('click', closeVideoModal);
+  if (videoModalBackdrop) videoModalBackdrop.addEventListener('click', closeVideoModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('open')) {
+      closeVideoModal();
+    }
+  });
+
 });
